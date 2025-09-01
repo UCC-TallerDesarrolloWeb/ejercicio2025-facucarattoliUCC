@@ -2,30 +2,71 @@
 <html lang="en">
 <head>
     <title>Catalogo Productos</title>
-    <style>
-        main {
-            display: grid;
-            grid-template-columns: auto auto auto;
-            text-align: center;
-        }
-
-        /*descendientes*/
-        main div {
-            border: 1px solid black;
-            border-radius: 10px;
-            margin: 20px;
-            padding: 20px;
-        }
-
-        div img{
-            width: 100%;
-
-        }
-    </style>
-
+    <link rel="stylesheet" href="estiloMiStore.css" type="text/css"/>
 </head>
-<body>
-<main>
+<body class="grid-container">
+<header class="item1">
+    Catalogo de Productos
+</header>
+<nav class="item2">
+    <a href="productos.html"> Catalago de productos </a>
+    <a href=""> Carritos de compra </a>
+</nav>
+
+<aside class="item3">
+    <form>
+        <fieldset>
+            <legend>Busquedqa</legend>
+            <label for="search">Buscar:</label>
+            <input
+                    type="text"
+                    id="search"
+                    placeholder="Searching..."
+            />
+        </fieldset>
+        <fieldset>
+            <legend>Precios</legend>
+            <p>
+                <label for="price-min">Minimo:</label>
+                <input
+                        type="number"
+                        id="price-min"
+                        name="price-min"
+                        value="0"
+                        min="0"
+                />
+            </p>
+            <p>
+                <label for="price-max">Maximo:</label>
+                <input
+                        type="number"
+                        id="price-max"
+                        name="price-max"
+                        value="0"
+                        min="0"
+                />
+            </p>
+        </fieldset>
+        <fieldset>
+            <legend>Tipo Producto</legend>
+            <p>
+                <input type="checkbox" id="protectores" name="protectores"/>
+                <label for="protectores">Protectores</label>
+            </p>
+            <p>
+                <input type="checkbox" id="entrenamiento" name="entrenamiento"/>
+                <label for="entrenamiento">Entrenamiento</label>
+            </p>
+            <p>
+                <input type="checkbox" id="dobok" name="dobok"/>
+                <label for="dobok">Dobok</label>
+            </p>
+        </fieldset>
+    </form>
+    Future filters bottoms
+</aside>
+
+<main class="item4">
     <div>
         <img src="../Ejercicios-JavaScript/images/cabezal-cerrado.webp">
         <h3>Cabeza Cerrado</h3>
@@ -66,4 +107,7 @@
         <h3>Protectores pies</h3>
     </div>
 </main>
+<footer class="item5">
+    Contact info
+</footer>
 </body>
