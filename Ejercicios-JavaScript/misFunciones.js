@@ -11,6 +11,11 @@ let convertUnidades =(unidad, valor) => {
     console.log(valor); //saber input usuario
     console.log(isNaN(valor));
 
+    //cambio una coma ingresada por un punto
+    if (valor.includes(",")){
+        valor = valor.replace("," , ".");
+    }
+
     if(isNaN(valor)){
         alert("Valor ingresado incorrecto");
         metro = "";
@@ -40,10 +45,10 @@ let convertUnidades =(unidad, valor) => {
             pulgada = 36 * yarda;
         }
     }
-    document.getElementById("metro").value = metro;
-    document.getElementById("pie").value = pie;
-    document.getElementById("pulgada").value = pulgada;
-    document.getElementById("yarda").value = yarda;
+    document.getElementById("metro").value = Number(metro).toFixed(2); //reduccion #decimales a 2
+    document.getElementById("pie").value = Math.round(pie*100)/100; //reduccion #decimales a 2
+    document.getElementById("pulgada").value = Number(pulgada).toFixed(2);
+    document.getElementById("yarda").value = Math.round(yarda*100)/100;
 };
 
 let convertirGR = (id, valor) => {
@@ -102,5 +107,16 @@ let multiplicar = () => {
         alert("Valor ingresado incorrecto");
     }
     else {document.getElementById("totalM").value = Number(mul1) * Number(mul2);
+    } //Number implica casteo de variables , cambio el tipo de variables
+}
+
+let dividir = () => {
+    var div1 = document.getElementById("numd1").value;
+    var div2 = document.getElementById("numd2").value;
+
+    if(isNaN(div1) || isNaN(div2)) {
+        alert("Valor ingresado incorrecto");
+    }
+    else {document.getElementById("totalD").value = Number(div1) / Number(div2);
     } //Number implica casteo de variables , cambio el tipo de variables
 }
