@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <title>Catalogo Productos</title>
     <link rel="stylesheet" href="estiloMiStore.css" type="text/css"/>
+    <script type="text/javascript" src=" tienda.js"></script>
 </head>
 <body class="grid-container">
 <header class="item1">
@@ -67,43 +68,50 @@
 </aside>
 
 <main class="item4">
+    <dialog id="detalle">
+        <h2>Detalle del Producto</h2>
+        <h3>Cabezal Cerrado</h3>
+        <p>Este producto viene del talle 1 al 3</p>
+        <button type="button" onclick="cerrarModal()">Cerrar</button>
+    </dialog>
     <div>
-        <img src="../Ejercicios-JavaScript/images/cabezal-cerrado.webp">
+        <img src="images/cabezal-cerrado.webp">
         <h3>Cabeza Cerrado</h3>
+        <button type="button" onclick="mostrarDetalle()">Ver Detalle</button>
     </div>
 
     <div>
-        <img src="../Ejercicios-JavaScript/images/auto.png">
+        <img src="images/auto.png">
         <h3>Auto</h3>
     </div>
 
     <div>
-        <img src="../Ejercicios-JavaScript/images/dobok.webp">
+        <img src="images/dobok.webp">
         <h3>Dobok</h3>
     </div>
 
     <div>
-        <img src="../Ejercicios-JavaScript/images/escudo-potencia.webp">
+        <img src="images/escudo-potencia.webp">
         <h3>Escudo Potencia</h3>
     </div>
 
     <div>
-        <img src="../Ejercicios-JavaScript/images/foco-con-dedos.webp">
+        <img src="images/foco-con-dedos.webp">
         <h3>Foco</h3>
     </div>
 
     <div>
-        <img src="../Ejercicios-JavaScript/images/fondo_numeros.jpg">
+        <img src="images/fondo_numeros.jpg">
         <h3>Fondo</h3>
     </div>
 
     <div>
-        <img src="../Ejercicios-JavaScript/images/protectores-manos.webp">
+        <img src="images/protectores-manos.webp">
         <h3>Guantes Boxeo</h3>
     </div>
 
     <div>
-        <img src="../Ejercicios-JavaScript/images/protectores-pie.webp">
+        <img src="images/protectores-pie.webp">
         <h3>Protectores pies</h3>
     </div>
 </main>
