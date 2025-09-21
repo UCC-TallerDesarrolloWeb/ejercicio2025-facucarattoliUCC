@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/html">
+
 <head>
     <title>Catalogo Productos</title>
     <link rel="stylesheet" href="estiloMiStore.css" type="text/css"/>
     <script type="text/javascript" src=" tienda.js"></script>
 </head>
-<body class="grid-container">
+
+<body class="grid-container" onload="mostrarCatalogo()">
 <header class="item1">
     Catalogo de Productos
 </header>
 <nav class="item2">
     <a href="productos.html"> Catalago de productos </a>
-    <a href=""> Carritos de compra </a>
+    <a href="carrito.html"> Carritos de compra </a>
 </nav>
 
 <aside class="item3">
@@ -67,15 +69,18 @@
     Future filters bottoms
 </aside>
 
-<main class="item4">
-    <dialog id="detalle">
-        <h2>Detalle del Producto</h2>
-        <h3>Cabezal Cerrado</h3>
-        <p>Este producto viene del talle 1 al 3</p>
-        <button type="button" onclick="cerrarModal()">Cerrar</button>
-    </dialog>
+<dialog id="detalle">
+    <h2>Detalle del Producto</h2>
+    <h3 id=titulo-prod">Cabezal Cerrado</h3>
+    <p id="descipcion-prod">Este producto viene del talle 1 al 3</p>
+    <p id="precio-prod"></p>
+    <button type="button" onclick="cerrarModal()">Cerrar</button>
+</dialog>
+
+<main class="item4" id="catalogo">
+
     <div>
-        <img src="images/cabezal-cerrado.webp">
+        <img src="images/cabezal-cerrado.webp" alt="Cabezal Cerrado"/>
         <h3>Cabeza Cerrado</h3>
         <button type="button" onclick="mostrarDetalle()">Ver Detalle</button>
     </div>
