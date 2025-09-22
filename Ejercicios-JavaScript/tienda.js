@@ -73,10 +73,10 @@ let cerrarModal = () => {
     document.getElementById("detalle").style.display = "none";
 }
 
-let mostrarCatalogo = () => {
+let mostrarCatalogo = (prod = productos) => {
     let contenido = "";
 
-    productos.forEach((prod, id) => {
+    prod.forEach((prod, id) => {
         contenido += `<div>
         <img src="images/${prod.imagen}" alt="${prod.nombre}"/>
         <h3>${prod.nombre}</h3>
@@ -102,10 +102,12 @@ let agregarAlCarrito = (id) => {
     } else {
         carritoList = JSON.parse(carritoList); //convierno un string
     }
-    carritoList.push(id); //push.() es valido solo con arrays
+    //push.() es valido solo con arrays
+    carritoList.push(id);
     console.log(carritoList);
     // si trabajo con objetos, debo pasarle string al localStorage entonces JSON.stringify(objeto) lo convierte en string
     localStorage.setItem("carrito", JSON.stringify(carritoList) );
+    contarProdctos();
 };
 
 let cargarCarrito = () => {
@@ -132,4 +134,84 @@ let cargarCarrito = () => {
 
 };
 
+let vaciarCarrito = () => {
+    localStorage.removeItem("carrito");
+    window.location.reload();
+};
 
+let eliminarProducto = (id) => {
+    const carrito = JSON.parse(localStorage.getItem("carrito"));
+
+    carrito.splice(id, 1);
+
+    if (carrito.length > 0){
+    localStorage.setItem("carrito", JSON.stringify(carrito) );
+    window.location.reload();
+    } else {
+        localStorage.removeItem("carrito");
+    }
+}
+
+let filtrarProducto = () => {
+    // TAREA MEJORAR Y OPTIMIZAR LA FUNCION
+
+    let searchWord = document.getElementById("search").value;
+    let min = document.getElementById("price-min").value;
+    let max = document.getElementById("price-max").value;
+    let prod = document.getElementById("protectores").checked;
+    let entr = document.getElementById("entrenamiento").checked;
+    let dob = document.getElementById("dobok").checked;
+    let marca = document.getElementById("marca").value;
+
+    let newLista = productos;
+
+    if(searchWord){
+    newLista =  newLista.filter(
+        (prod) =>
+        prod.nombre.toLowerCase().includes(searchWord.toLowerCase()) ||
+        prod.description.toLowerCase().includes(searchWord.toLowerCase())
+    );}
+
+    if(min){
+        newLista =  newLista.filter((prod) =>prod.precio >= min)
+    }
+
+    if(max){
+        newLista =  newLista.filter((prod) =>prod.precio <= max)
+    }
+
+    let category = [];
+    prod ? category.push("protectores") : "";
+    entr ? category.push("entrenamiento") : "";
+    dob ? category.push("dobok") : "";
+
+    if (category.length > 0){
+        newLista = newLista.filter(
+            (prod) => category.includes(prod.categoria)
+        );
+    }
+
+    if (marca != "Todas"){
+        newLista = newLista.filter((prod) => prod.marca == marca );
+    }
+
+    mostrarCatalogo(newLista);
+};
+
+let formaPrice = (price) => {
+    const numberFormat = new Intl.NumberFormat("en-AR", {
+        currency:"ARS",
+        style: "currency",
+        minimumFractionDigits: 2});
+
+    return numberFormat.format(price);
+
+};
+
+let contarProdctos = () => {
+    let getCart = JSON.parse(localStorage.getItem("carrito"));
+
+    if (getCart.length > 0) {
+        document.getElementById("cant-prod").innerText = getCart.length()
+    }
+};

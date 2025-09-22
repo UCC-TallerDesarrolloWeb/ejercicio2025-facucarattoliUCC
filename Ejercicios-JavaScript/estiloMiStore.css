@@ -76,3 +76,11 @@ header {
     background-color: var(--color-primario);
     color: white;
 }
+
+#cant-prod{
+    background-color: var(--color-primario);
+    border-radius: 50%;
+    display: inline;
+    color: var(--color-letra);
+    padding: 7px;
+}
