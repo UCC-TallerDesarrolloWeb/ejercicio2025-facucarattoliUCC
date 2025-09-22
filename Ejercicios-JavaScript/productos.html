@@ -7,7 +7,7 @@
     <script type="text/javascript" src=" tienda.js"></script>
 </head>
 
-<body class="grid-container" onload = "mostrarCatalogo(); contarProdctos()">
+<body class="grid-container" onload = "mostrarCatalogo(); contarProductos()">
 
 <header class="item1"> Catalogo de Productos</header>
 
@@ -49,7 +49,6 @@
                         type="number"
                         id="price-max"
                         name="price-max"
-                        value="0"
                         min="0"
                         onchange="filtrarProducto()"
                 />
@@ -92,6 +91,14 @@
                 <option value="Daedo">Daedo</option>
             </select>
         </fieldset>
+
+        <select id="order" onchange="orderCatalog(this.value)">
+            <option disabled value="">Seleccione un Orden</option>
+            <option value="menor">Precio - de menor a mayor</option>
+            <option value="mayor">Precio - de mayor a menor</option>
+            <option value="a-z">Nombre - de A a la Z</option>
+            <option value="z-a">Precio - de Z a la A</option>
+        </select>
 
     </form>
     Future filters bottoms

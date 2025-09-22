@@ -80,6 +80,7 @@ let mostrarCatalogo = (prod = productos) => {
         contenido += `<div>
         <img src="images/${prod.imagen}" alt="${prod.nombre}"/>
         <h3>${prod.nombre}</h3>
+        <p>${formatPrice(prod.precio)}</p>
         <button type="button" onclick="mostrarDetalle( ${id} )">Ver Detalle</button>
         <button type="button" onclick="agregarAlCarrito(${id})">Agregar al Carrito</button>
         </div>`
@@ -134,6 +135,44 @@ let cargarCarrito = () => {
 
 };
 
+let mostrarCarrito = () => {
+    let contenido = "";
+    const  carrito = JSON.parse(localStorage.getItem("carrito"));
+    let total = 0;
+
+    if(carrito != null){
+        const listProd = [];
+        const  listCant = [];
+
+        listProd.forEach((num) => {
+            if(!listProd.includes(num)){
+                listProd.push(num);
+                listProd.push(1);
+            }else{
+                // indexOf reccorre un array y me dice el indice del elemento que estoy buscando
+                const inx = listProd.indexOf(num);
+                listCant[inx] += 1;
+            }
+        })
+    }
+
+    if (carrito != null){
+        carrito.forEach((num, id) => {
+            contenido += `<div> 
+               <h3>${productos[num].nombre}</h3>
+               <p>${formatPrice(productos[num].precio)}</p>
+               <p>Cantidad: ${listCant[id]}</p>
+                <button type ="button" onclick="eliminarProducto(${id})">Eliminar Producto</button>
+            </div>`;
+            total += productos[num].precio * listCant[id];
+        });
+
+        contenido += `<p>Total = ${formatPrice(total)}</p>`;
+        contenido += `<button type="button" onclick="vaciarCarrito()">Vaciar Carrito</button>`;
+
+    }
+}
+
 let vaciarCarrito = () => {
     localStorage.removeItem("carrito");
     window.location.reload();
@@ -181,14 +220,18 @@ let filtrarProducto = () => {
     }
 
     let category = [];
-    prod ? category.push("protectores") : "";
-    entr ? category.push("entrenamiento") : "";
-    dob ? category.push("dobok") : "";
+    prod ? category.push("Protectores") : "";
+    entr ? category.push("Entrenamiento") : "";
+    dob ? category.push("Dobok") : "";
+
+    console.log(category);
 
     if (category.length > 0){
         newLista = newLista.filter(
             (prod) => category.includes(prod.categoria)
         );
+
+        console.log(newLista);
     }
 
     if (marca != "Todas"){
@@ -198,7 +241,7 @@ let filtrarProducto = () => {
     mostrarCatalogo(newLista);
 };
 
-let formaPrice = (price) => {
+let formatPrice = (price) => {
     const numberFormat = new Intl.NumberFormat("en-AR", {
         currency:"ARS",
         style: "currency",
@@ -208,10 +251,48 @@ let formaPrice = (price) => {
 
 };
 
-let contarProdctos = () => {
+let contarProductos = () => {
     let getCart = JSON.parse(localStorage.getItem("carrito"));
 
-    if (getCart.length > 0) {
-        document.getElementById("cant-prod").innerText = getCart.length()
+    if (getCart.length != null) {
+        document.getElementById("cant-prod").innerText = JSON.parse(getCart).length ;
     }
 };
+
+let orderCatalog = (order) => {
+    let newProducts;
+    switch (order) {
+        case "menor":
+            newProducts = productos.sort((a, b) => a.precio - b.precio);
+            break;
+
+        case "mayor":
+            newProducts = productos.sort((a, b) => b.precio - a.precio);
+            break;
+
+        case "a-z":
+            newProducts = productos.sort((a, b) => {
+                if (a.nombre.toLowerCase() < b.nombre.toLowerCase()) {
+                    return -1;
+                } else {
+                    return 1;
+                }
+                break;
+            });
+
+        case "z-a":
+            newProducts = productos.sort((a, b) => {
+                if (a.nombre.toLowerCase() > b.nombre.toLowerCase()) {
+                    return -1;
+                } else {
+                    return 1;
+                }
+                break;
+            });
+
+        default:
+            newProducts = productos.sort((a, b) => a.precio - b.precio);
+            break;
+    }
+    mostrarCatalogo(newProducts)
+}
