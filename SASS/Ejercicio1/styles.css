@@ -1,0 +1,30 @@
+.caja h2 {
+  color: green;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
+}
+
+.caja p {
+  color: aqua;
+}
+
+body {
+  background-color: lightgray;
+}
+
+.caja {
+  background-color: white;
+  border: 4px solid black;
+  box-shadow: 0 0 2px black;
+  margin: 20px;
+  color: green;
+}
+
+.caja-secundaria {
+  background-color: orange;
+  border: 4px solid black;
+  box-shadow: 0 0 2px black;
+  margin: 20px;
+  color: red;
+}
+
+/*# sourceMappingURL=styles.css.map */

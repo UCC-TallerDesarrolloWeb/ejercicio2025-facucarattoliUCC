@@ -35,50 +35,26 @@
             <legend>Precios</legend>
             <p>
                 <label for="price-min">Minimo:</label>
-                <input
-                        type="number"
-                        id="price-min"
-                        name="price-min"
-                        value="0"
-                        min="0"
-                        onchange="filtrarProducto()"/>
+                <input type="number" id="price-min" name="price-min" value="0" min="0" onchange="filtrarProducto()"/>
             </p>
             <p>
                 <label for="price-max">Maximo:</label>
-                <input
-                        type="number"
-                        id="price-max"
-                        name="price-max"
-                        min="0"
-                        onchange="filtrarProducto()"
-                />
+                <input type="number" id="price-max" name="price-max" min="0" onchange="filtrarProducto()"/>
             </p>
         </fieldset>
         <fieldset>
             <legend>Tipo Producto</legend>
             <p>
-                <input type="checkbox"
-                       id="protectores"
-                       name="protectores"
-                       onchange="filtrarProducto()"
-                />
+                <input type="checkbox" id="protectores" name="protectores" onchange="filtrarProducto()"/>
 
                 <label for="protectores">Protectores</label>
             </p>
             <p>
-                <input type="checkbox"
-                       id="entrenamiento"
-                       name="entrenamiento"
-                       onchange="filtrarProducto()"
-                />
+                <input type="checkbox" id="entrenamiento" name="entrenamiento" onchange="filtrarProducto()"/>
                 <label for="entrenamiento">Entrenamiento</label>
             </p>
             <p>
-                <input type="checkbox"
-                       id="dobok"
-                       name="dobok"
-                       onchange="filtrarProducto()"
-                />
+                <input type="checkbox" id="dobok" name="dobok" onchange="filtrarProducto()"/>
                 <label for="dobok">Dobok</label>
             </p>
         </fieldset>
@@ -99,10 +75,11 @@
             <option value="a-z">Nombre - de A a la Z</option>
             <option value="z-a">Precio - de Z a la A</option>
         </select>
-
     </form>
     Future filters bottoms
 </aside>
+
+<main class="item4" id="catalogo">
 
 <dialog id="detalle">
     <h2>Detalle del Producto</h2>
@@ -112,7 +89,7 @@
     <button type="button" onclick="cerrarModal()">Cerrar</button>
 </dialog>
 
-<main class="item4" id="catalogo">
+
 
     <div>
         <img src="images/cabezal-cerrado.webp" alt="Cabezal Cerrado"/>
@@ -155,6 +132,7 @@
         <h3>Protectores pies</h3>
     </div>
 </main>
+
 <footer class="item5">
     Contact info
 </footer>
