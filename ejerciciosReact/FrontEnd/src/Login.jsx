@@ -1,9 +1,11 @@
 import {useState} from "react";
-import "./login.css"
+import "./styles/login.scss"
+import {useNavigate} from "react-router-dom";
 
 const Login = () => {
     const [usuario, setUsuario] = useState("");
     const [password, setPassword] = useState("");
+    const navigate = useNavigate();
 
     const handlerLogin = async (e) => {
         e.preventDefault();
